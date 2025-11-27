@@ -13,6 +13,11 @@ var books = []data.Book{
     {3, "The Pragmatic Programmer", "Andrew Hunt", 1999},
 }
 
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+    tmpl := template.Must(template.ParseFiles("templates/home.html"))
+    tmpl.Execute(w, books)
+}
+
 func BookHandler(w http.ResponseWriter, r *http.Request) {
     idStr := r.URL.Query().Get("id")
 
@@ -42,3 +47,8 @@ func BookHandler(w http.ResponseWriter, r *http.Request) {
     tmpl := template.Must(template.ParseFiles("templates/book.html"))
     tmpl.Execute(w, selected)
 }
+
+func ContactHandler(w http.ResponseWriter, r *http.Request) {
+    return
+}
+
